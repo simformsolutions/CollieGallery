@@ -72,16 +72,6 @@ UIViewControllerTransitioningDelegate  {
                 update(d)
                 break
                 
-            case .ended:
-                onClosePanGesture?()
-                if(d > 0.1){
-                    self.finish()
-                }
-                else {
-                    self.cancel()
-                }
-                
-                self.interactive = false
             default:
                 if(d > 0.1){
                     self.finish()
@@ -91,6 +81,7 @@ UIViewControllerTransitioningDelegate  {
                 }
                 
                 self.interactive = false
+                onClosePanGesture?()
             }
         }
     }

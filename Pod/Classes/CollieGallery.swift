@@ -641,7 +641,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
             - transitionType: The transition type used to present the gallery
      
     */
-    open func presentInViewController(_ sourceViewController: UIViewController, transitionType: CollieGalleryTransitionType? = nil) {
+    open func presentInViewController(_ sourceViewController: UIViewController, transitionType: CollieGalleryTransitionType? = nil, completion: @escaping (()->())?) {
         
         let type = transitionType == nil ? CollieGalleryTransitionType.defaultType : transitionType!
         
@@ -653,6 +653,6 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         transitioningDelegate = transitionManager
         
-        sourceViewController.present(self, animated: type.animated, completion: nil)
+        sourceViewController.present(self, animated: type.animated, completion: completion)
     }
 }
