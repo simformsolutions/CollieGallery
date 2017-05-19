@@ -245,13 +245,6 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func setupCloseButton() {
-        guard options.showCloseButton! else {
-            self.closeButton?.isHidden = true
-            self.closeButton?.removeFromSuperview()
-            self.closeButton = nil
-            return
-        }
-        
         if self.closeButton != nil {
             self.closeButton.removeFromSuperview()
         }
@@ -271,18 +264,8 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
             closeButton.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         }
         closeButton.addTarget(self, action: #selector(closeButtonTouched), for: .touchUpInside)
-        
-        var shouldBeHidden = false
-        
-        if self.closeButton != nil {
-            shouldBeHidden = closeButton.isHidden
-        }
-        
-        closeButton.isHidden = shouldBeHidden
-        
-        
+        closeButton.isHidden = !options.showCloseButton!
         self.closeButton = closeButton
-        
         view.addSubview(self.closeButton)
     }
     
