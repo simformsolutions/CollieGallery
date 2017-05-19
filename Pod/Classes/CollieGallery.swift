@@ -641,7 +641,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
             - transitionType: The transition type used to present the gallery
      
     */
-    open func presentInViewController(_ sourceViewController: UIViewController, transitionType: CollieGalleryTransitionType? = nil, completion: @escaping (()->())?) {
+    open func presentInViewController(_ sourceViewController: UIViewController, transitionType: CollieGalleryTransitionType? = nil, completion: (()->())? = nil) {
         
         let type = transitionType == nil ? CollieGalleryTransitionType.defaultType : transitionType!
         
