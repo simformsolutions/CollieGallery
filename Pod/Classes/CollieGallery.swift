@@ -515,6 +515,10 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     
+    public func dismissGallery(completion: @escaping (()->())) {
+        dismiss(animated: true, completion: completion)
+    }
+    
     // MARK: - Internal functions
     @objc internal func closeButtonTouched(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)

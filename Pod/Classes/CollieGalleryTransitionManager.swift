@@ -86,7 +86,6 @@ UIViewControllerTransitioningDelegate  {
         }
     }
     
-    
     // MARK: - UIViewControllerAnimatedTransitioning Delegate
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         if let transition = self.transitionType.transition {
