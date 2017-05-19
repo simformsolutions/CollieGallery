@@ -48,6 +48,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     fileprivate var activityController: UIActivityViewController!
     
+    fileprivate var initialCustomSize: CGSize?
     
     // MARK: - Internal properties
     internal var options = CollieGalleryOptions()
@@ -113,13 +114,15 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     */
     public convenience init(pictures: [CollieGalleryPicture],
                             options: CollieGalleryOptions? = nil,
-                            theme: CollieGalleryTheme? = nil)
+                            theme: CollieGalleryTheme? = nil,
+                            initialCustomSize: CGSize? = nil)
     {
         self.init(nibName: nil, bundle: nil)
         self.pictures = pictures
         
         self.options = (options != nil) ? options! : CollieGalleryOptions.sharedOptions
         self.theme = (theme != nil) ? theme! : CollieGalleryTheme.defaultTheme
+        self.initialCustomSize = initialCustomSize
     }
     
     
@@ -242,6 +245,13 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func setupCloseButton() {
+        guard options.showCloseButton! else {
+            self.closeButton?.isHidden = true
+            self.closeButton?.removeFromSuperview()
+            self.closeButton = nil
+            return
+        }
+        
         if self.closeButton != nil {
             self.closeButton.removeFromSuperview()
         }
@@ -413,7 +423,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func getInitialAvaiableSize() -> CGSize {
-        return view.bounds.size
+        return initialCustomSize ?? view.bounds.size
     }
     
     fileprivate func getScrollViewFrame(_ avaiableSize: CGSize) -> CGRect {

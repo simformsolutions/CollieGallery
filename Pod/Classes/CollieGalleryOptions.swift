@@ -53,6 +53,9 @@ open class CollieGalleryOptions: NSObject {
     /// Open gallery at specified page
     open var openAtIndex: Int = 0
 
+    /// Indicates whether a close button should be shown 
+    open var showCloseButton: Bool? = true
+    
     /// Custom close button image name
     open var customCloseImageName: String? = nil
     
