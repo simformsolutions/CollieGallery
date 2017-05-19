@@ -520,7 +520,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     // MARK: - Internal functions
-    @objc internal func closeButtonTouched(_ sender: AnyObject) {
+    @objc public func closeButtonTouched(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
     
