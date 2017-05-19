@@ -44,6 +44,12 @@ UIViewControllerTransitioningDelegate  {
         }
     }
     
+    internal var onClosePanGesture: (()->())?
+    
+    convenience init(onClosePanGesture: (()->())?) {
+        self.init()
+        self.onClosePanGesture = onClosePanGesture
+    }
     
     // MARK: - Internal functions
     internal func handlePan(_ pan: UIPanGestureRecognizer){
@@ -66,6 +72,16 @@ UIViewControllerTransitioningDelegate  {
                 update(d)
                 break
                 
+            case .ended:
+                onClosePanGesture?()
+                if(d > 0.1){
+                    self.finish()
+                }
+                else {
+                    self.cancel()
+                }
+                
+                self.interactive = false
             default:
                 if(d > 0.1){
                     self.finish()

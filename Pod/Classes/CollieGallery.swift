@@ -27,7 +27,8 @@ import UIKit
 open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryViewDelegate {
     
     // MARK: - Private properties
-    fileprivate let transitionManager = CollieGalleryTransitionManager()
+    fileprivate var transitionManager = CollieGalleryTransitionManager()
+
     fileprivate var theme = CollieGalleryTheme.dark
     fileprivate var pictures: [CollieGalleryPicture] = []
     fileprivate var pictureViews: [CollieGalleryView] = []
@@ -115,7 +116,8 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     public convenience init(pictures: [CollieGalleryPicture],
                             options: CollieGalleryOptions? = nil,
                             theme: CollieGalleryTheme? = nil,
-                            initialCustomSize: CGSize? = nil)
+                            initialCustomSize: CGSize? = nil,
+                            onClosePanGesture: (()->())? = nil)
     {
         self.init(nibName: nil, bundle: nil)
         self.pictures = pictures
@@ -123,6 +125,8 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         self.options = (options != nil) ? options! : CollieGalleryOptions.sharedOptions
         self.theme = (theme != nil) ? theme! : CollieGalleryTheme.defaultTheme
         self.initialCustomSize = initialCustomSize
+        
+        transitionManager = CollieGalleryTransitionManager(onClosePanGesture: onClosePanGesture)
     }
     
     
