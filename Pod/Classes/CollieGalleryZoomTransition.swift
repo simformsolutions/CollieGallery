@@ -130,12 +130,12 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
         if let view = targetView {
             let rectInWindow =  self.fromView.superview?.convert(view.frame, to: nil)
     
-            if let toRect = rectInWindow, let bounds = containerBounds {
-                if bounds.contains(toRect) {
+            if let toRect = rectInWindow { //, let bounds = containerBounds {
+//                if bounds.contains(toRect) {
                     let scales = CGSize(width: toRect.size.width/imageRect.size.width, height: toRect.size.height/imageRect.size.height)
                     let offset = CGPoint(x: toRect.midX - imageRect.midX, y: toRect.midY - imageRect.midY)
                     return CGAffineTransform(a: scales.width, b: 0, c: 0, d: scales.height, tx: offset.x, ty: offset.y)
-                }
+//                }
             }
         }
         
