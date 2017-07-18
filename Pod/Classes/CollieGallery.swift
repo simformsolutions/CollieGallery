@@ -139,7 +139,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !UIApplication.shared.isStatusBarHidden {
+        if !UIApplication.shared.isStatusBarHidden, options.hideStatusBar {
             UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.slide)
         }
         
@@ -176,7 +176,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     override open var prefersStatusBarHidden : Bool {
-        return true
+        return options.hideStatusBar
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

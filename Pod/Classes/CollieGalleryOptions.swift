@@ -41,6 +41,9 @@ open class CollieGalleryOptions: NSObject {
     /// Indicates weather the progress should be displayed or not
     open var showProgress: Bool = true
     
+    /// Indicates whether iOS' status bar will be shown
+    open var hideStatusBar: Bool = true
+    
     /// Indicates weather the caption view should be displayed or not
     open var showCaptionView: Bool = false
     
