@@ -524,8 +524,13 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         dismiss(animated: true, completion: completion)
     }
     
-    @objc public func pop() {
-        navigationController?.popViewController(animated: true)
+    @objc public func popToRoot(completion: @escaping (()->())) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        navigationController?.popToRootViewController(animated: true)
+        CATransaction.commit()
     }
     
     @objc internal func actionButtonTouched(_ sender: AnyObject) {
