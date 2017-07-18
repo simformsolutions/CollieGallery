@@ -97,7 +97,7 @@ internal class CollieGalleryView: UIView, UIScrollViewDelegate {
     
     fileprivate func setupImageView() {
         imageView = UIImageView(frame: scrollFrame)
-        imageView.contentMode = UIViewContentMode.scaleToFill
+        imageView.contentMode = UIViewContentMode.scaleAspectFit//scaleToFill
         imageView.backgroundColor = UIColor.clear
         
         scrollView.addSubview(imageView)

@@ -128,7 +128,7 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
     
     fileprivate func generateTransformFromImageRect(_ imageRect: CGRect, targetView: UIView?, containerBounds: CGRect?) -> CGAffineTransform {
         if let view = targetView {
-            let rectInWindow =  self.fromView.superview?.convert(view.frame, to: nil)
+            let rectInWindow = self.fromView.superview?.convert(view.frame, to: nil)
     
             if let toRect = rectInWindow { //, let bounds = containerBounds {
 //                if bounds.contains(toRect) {
