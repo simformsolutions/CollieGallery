@@ -267,7 +267,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
             closeButton.setTitleColor(theme.closeButtonColor, for: UIControlState())
             closeButton.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
         }
-        closeButton.addTarget(self, action: #selector(closeButtonTouched(_:completion:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonTouched), for: .touchUpInside)
         closeButton.isHidden = !options.showCloseButton!
         self.closeButton = closeButton
         view.addSubview(self.closeButton)
@@ -516,12 +516,14 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     
     
     public func dismissGallery(completion: @escaping (()->())) {
-        dismiss(animated: true, completion: completion)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: completion)
+        }
     }
     
     // MARK: - Internal functions
-    @objc public func closeButtonTouched(_ sender: AnyObject, completion: (()->())? = nil) {
-        dismiss(animated: true, completion: completion)
+    @objc public func closeButtonTouched() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc public func popToRoot(completion: @escaping (()->())) {
