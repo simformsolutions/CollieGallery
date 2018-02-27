@@ -29,7 +29,7 @@ class ViewController: UIViewController, CollieGalleryZoomTransitionDelegate, Col
 
         let gallery = CollieGallery(pictures: pictures)
         gallery.delegate = self
-        
+
         gallery.presentInViewController(self)
     }
     
@@ -90,7 +90,7 @@ class ViewController: UIViewController, CollieGalleryZoomTransitionDelegate, Col
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in})
             alert.addAction(cancelAction)
             self?.presentedViewController?.present(alert, animated: true) {}
-        }
+        } as (() -> Void)
         
         let gallery = CollieGallery(pictures: pictures, options: options)
         gallery.presentInViewController(self, transitionType: CollieGalleryTransitionType.zoom(fromView: sender, zoomTransitionDelegate: self))
