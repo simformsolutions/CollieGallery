@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   CollieGallery:
-    :path: ../
+    :path: "../"
   Nimble:
     :git: https://github.com/Quick/Nimble.git
   Quick:
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f35ea2be55c0d4c103d7b4ba7f7d0412eb472494
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
