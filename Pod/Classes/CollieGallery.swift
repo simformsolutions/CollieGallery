@@ -200,7 +200,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         setupCloseButton()
         
         if options.enableSave {
-            setupActionButton()
+            // setupActionButton()
         }
         
         setupCaptionView()
@@ -365,7 +365,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         activityController?.popoverPresentationController?.sourceRect = popOverPresentationRect
         
         setupCloseButton()
-        setupActionButton()
+        // setupActionButton()
         
         updateContentOffset()
         
