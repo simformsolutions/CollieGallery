@@ -418,9 +418,9 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     
     fileprivate func getScrollViewFrame(_ avaiableSize: CGSize) -> CGRect {
         let x: CGFloat = -options.gapBetweenPages
-        let y: CGFloat = 0.0
+        let y: CGFloat = 40.0 //default value is 'zero' top view (it will show close and share button iphoneX)
         let width: CGFloat = avaiableSize.width + options.gapBetweenPages
-        let height: CGFloat = avaiableSize.height
+        let height: CGFloat = avaiableSize.height - 40 // minus 40 helps you will get image in view correct form
         
         return CGRect(x: x, y: y, width: width, height: height)
     }
@@ -495,17 +495,17 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     }
     
     fileprivate func getCloseButtonFrame(_ avaiableSize: CGSize) -> CGRect {
-        return CGRect(x: 0, y: 0, width: 50, height: 50)
+        return CGRect(x: 0, y: 30, width: 50, height: 50)
     }
     
     fileprivate func getActionButtonFrame(_ avaiableSize: CGSize) -> CGRect {
-        return CGRect(x: avaiableSize.width - 50, y: 0, width: 50, height: 50)
+        return CGRect(x: avaiableSize.width - 50, y: 30, width: 50, height: 50)
     }
     
     fileprivate func getCustomButtonFrame(_ avaiableSize: CGSize, forIndex index: Int) -> CGRect {
         let position = index + 2
         
-        return CGRect(x: avaiableSize.width - CGFloat(50 * position), y: 0, width: 50, height: 50)
+        return CGRect(x: avaiableSize.width - CGFloat(50 * position), y: 30, width: 50, height: 50)
     }
     
     fileprivate func updateCaptionText () {
